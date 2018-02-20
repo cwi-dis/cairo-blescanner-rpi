@@ -8,7 +8,7 @@
 # Description:       <DESCRIPTION>
 ### END INIT INFO
 
-SCRIPT="/home/pi/src/cairo-blescanner-pi/cairo-ble-scanner.py"
+SCRIPT="/home/pi/src/cairo-blescanner-rpi/cairo-ble-scanner.py"
 RUNAS=root
 
 PIDFILE=/var/run/cairo-blescanner.pid
@@ -20,7 +20,7 @@ start() {
     return 1
   fi
   echo 'Starting service…' >&2
-  local CMD="$SCRIPT &> \"$LOGFILE\" & echo \$!"
+  local CMD="$SCRIPT &>> \"$LOGFILE\" & echo \$!"
   su -c "$CMD" $RUNAS > "$PIDFILE"
   echo 'Service started' >&2
 }
